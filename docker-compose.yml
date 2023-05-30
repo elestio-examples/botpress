@@ -1,0 +1,32 @@
+version: "3.3"
+
+services:
+  postgres:
+    image: postgres:${SOFTWARE_VERSION_TAG}
+    restart: always
+    #command: -c ssl=on -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      # - ./auth.json:/cube/conf/auth.json
+
+  botpress:
+    image: botpress/server:${SOFTWARE_VERSION_TAG}
+    restart: always
+    ports:
+      - 172.17.0.1:4765:8080
+    volumes:
+      - ./botpress_data:/botpress/data
+    environment:
+      - PORT=8080
+      - BP_HOST=0.0.0.0
+      - NODE_ENV=production
+      - PG_HOST=${DATABASE_HOST}
+      - PG_PORT=${DATABASE_PORT}
+      - PG_USER=${DB_USER}
+      - PG_PASSWORD=${DB_PASS}
+      - PG_SSL=false
