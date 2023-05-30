@@ -20,6 +20,10 @@ environments:
     value: "postgres"
   - key: "DATABASE_PORT"
     value: "5432"
+  - key: "ADMIN_EMAIL"
+    value: "[EMAIL]"
+  - key: "ADMIN_PASSWORD"
+    value: "random_password"
 
 config:
   runTime: "dockerCompose"

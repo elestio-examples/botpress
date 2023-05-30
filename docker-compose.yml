@@ -18,7 +18,7 @@ services:
     image: botpress/server:${SOFTWARE_VERSION_TAG}
     restart: always
     ports:
-      - 172.17.0.1:4765:8080
+      - 172.17.0.1:4765:8081
     volumes:
       - ./botpress_data:/botpress/data
     environment:
@@ -30,3 +30,11 @@ services:
       - PG_USER=${DB_USER}
       - PG_PASSWORD=${DB_PASS}
       - PG_SSL=false
+
+volumes:
+  botpress_appdata:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/botpress_data
+      o: bind
