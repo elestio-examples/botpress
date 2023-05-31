@@ -5,7 +5,7 @@ set -o allexport; source .env; set +o allexport;
 echo "Waiting for software to be ready ..."
 sleep 30s;
 
-target=$(docker-compose port botpress 8081)
+target=$(docker-compose port nginx 80)
 
 curl http://${target}/api/v2/admin/auth/register/basic/default \
   -H 'accept: application/json, text/plain, */*' \
