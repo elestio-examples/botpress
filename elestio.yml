@@ -11,7 +11,7 @@ environments:
   - key: "SOFTWARE_VERSION_TAG"
     value: "latest"
   - key: "DB_NAME"
-    value: "botpress"
+    value: "botpress_db"
   - key: "DB_USER"
     value: "postgres"
   - key: "DB_PASS"
@@ -24,6 +24,8 @@ environments:
     value: "[EMAIL]"
   - key: "ADMIN_PASSWORD"
     value: "random_password"
+  - key: "EXTERNAL_URL"
+    value: "https://[CI_CD_DOMAIN]"
 
 config:
   runTime: "dockerCompose"
