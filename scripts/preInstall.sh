@@ -3,4 +3,4 @@
 
 
 mkdir -p ./botpress_data
-chown -R 1000:1000 ./botpress_data
+chown -R 999:999 ./botpress_data
