@@ -3,6 +3,7 @@ version: "3.3"
 services:
   botpress:
     image: botpress/server:${SOFTWARE_VERSION_TAG}
+    restart: always
     ports:
       - 3000
     environment:
@@ -15,6 +16,7 @@ services:
 
   postgres:
     image: postgres:11.2-alpine
+    restart: always
     expose:
       - 5435
     container_name: postgres
@@ -28,6 +30,7 @@ services:
 
   nginx:
     image: nginx:1.21
+    restart: always
     ports:
       - 172.17.0.1:4765:80
     command: nginx -g 'daemon off';
