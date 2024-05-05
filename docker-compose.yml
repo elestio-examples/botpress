@@ -33,7 +33,7 @@ services:
     restart: always
     ports:
       - 172.17.0.1:4765:80
-    command: nginx -g 'daemon off';
+    command: nginx -g 'daemon off;';
     depends_on:
       - botpress
     volumes:
